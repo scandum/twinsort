@@ -22,7 +22,7 @@ of each block. The tail merge routine also contains a forward run detector.
 Performance
 -----------
 Based on limited benchmarks tailsort performs better than Timsort while the
-algorithm is about 150 lines of spare C code.
+algorithm is about 150 lines of sparse C code.
 
 Overall it's slower than quadsort, most notably on small arrays.
 
