@@ -1,0 +1,2 @@
+# tailsort
+An adaptive mergesort 
