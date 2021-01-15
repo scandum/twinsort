@@ -13,16 +13,22 @@ The twin swap is a pre-sorting routine which turns the array into sorted blocks
 of 2 elements. The twin swap routine also contains a reverse order run
 detector, so 6 5 4 3 2 1 is sorted into 1 2 3 4 5 6 rather than 5 6 3 4 1 2.
 
+The swap and the run detection are carried out simultaneously, subsequently the
+reverse run detector has very little overhead.
+
 Tail sort
 ---------
 The tail sort is a bottom-up merge sort which uses at most n / 2 swap memory.
+
 It merges by copying the right block to swap memory and merging the tails
-of each block. The tail merge routine also contains a forward run detector.
+of each block. The tail merge routine also contains a forward run detector
+which has very little overhead.
 
 Performance
 -----------
 Based on limited benchmarks tailsort performs better than Timsort while the
-algorithm is about 150 lines of sparse C code.
+algorithm is about 150 lines of sparse C code that should be relatively easy
+to understand.
 
 Overall it's slower than quadsort, most notably on small arrays.
 
@@ -103,4 +109,3 @@ Various small to medium array sizes with random distributions.
 |           |          |      |          |          |             |                  |
 |  tailsort |     4095 |  i32 | 0.006793 | 0.007030 |     23955.4 | random 2048-4095 |
 |     qsort |     4095 |  i32 | 0.007672 | 0.007854 |     20300.7 | random 2048-4095 |
-
