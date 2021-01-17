@@ -24,7 +24,7 @@
 */
 
 /*
-	tailsort 1.1.3.2
+	tailsort 1.1.3.3
 */
 
 #ifndef TAILSORT_H
@@ -69,46 +69,42 @@ unsigned int twin_swap32(int *array, unsigned int nmemb, CMPFUNC *cmp)
 		}
 		pts = pta;
 
-		swapper:
-
 		pta += 2;
 
-		if (pta <= pte)
+		while (1)
 		{
+			if (pta > pte)
+			{
+				if (pts == array)
+				{
+					if (nmemb % 2 == 0 || cmp(&pta[-1], &pta[0]) > 0)
+					{
+						ptt = pte + 1;
+
+						while (pts < ptt)
+						{
+							tmp = *pts;
+							*pts++ = *ptt;
+							*ptt-- = tmp;
+						}
+						return 1; // entire array was in reverse order
+					}
+				}
+				break;
+			}
+
 			if (cmp(&pta[0], &pta[1]) > 0)
 			{
 				if (cmp(&pta[-1], &pta[0]) > 0)
 				{
-					goto swapper;
+					pta += 2;
+					continue;
 				}
 				tmp = pta[0]; pta[0] = pta[1]; pta[1] = tmp;
 			}
-
-			ptt = pta - 1;
-			pta += 2;
+			break;
 		}
-		else
-		{
-			if (pts == array)
-			{
-				if (nmemb % 2 == 0 || cmp(&pta[-1], &pta[0]) > 0)
-				{
-					// entire array was in reverse order
-
-					ptt = pts + nmemb - 1;
-
-					while (pts < ptt)
-					{
-						tmp = *pts;
-						*pts++ = *ptt;
-						*ptt-- = tmp;
-					}
-
-					return 1;
-				}
-			}
-			ptt = pta - 1;
-		}
+		ptt = pta - 1;
 
 		while (pts < ptt)
 		{
@@ -116,6 +112,7 @@ unsigned int twin_swap32(int *array, unsigned int nmemb, CMPFUNC *cmp)
 			*pts++ = *ptt;
 			*ptt-- = tmp;
 		}
+		pta += 2;
 	}
 	return 0;
 }
@@ -164,14 +161,15 @@ void tail_merge32(int *array, int *swap, unsigned int nmemb, unsigned int block,
 				c_max--;
 			}
 
-			c = c_max - 1;
+			c = pts;
+			d = pta + block;
 
-			while (c >= pts)
+			while (c < c_max)
 			{
-				*c-- = *d--;
+				*c++ = *d++;
 			}
+			c--;
 
-			c = c_max - 1;
 			d = pta + block - 1;
 			e = d_max - 1;
 
@@ -243,44 +241,44 @@ unsigned int twin_swap64(long long *array, unsigned int nmemb, CMPFUNC *cmp)
 		}
 		pts = pta;
 
-		swapper:
-
 		pta += 2;
 
-		if (pta <= pte)
+		while (1)
 		{
+			if (pta > pte)
+			{
+				if (pts == array)
+				{
+					if (nmemb % 2 == 0 || cmp(&pta[-1], &pta[0]) > 0)
+					{
+						ptt = pte + 1;
+
+						while (pts < ptt)
+						{
+							tmp = *pts;
+							*pts++ = *ptt;
+							*ptt-- = tmp;
+						}
+						return 1; // entire array was in reverse order
+					}
+				}
+				break;
+			}
+
 			if (cmp(&pta[0], &pta[1]) > 0)
 			{
 				if (cmp(&pta[-1], &pta[0]) > 0)
 				{
-					goto swapper;
+					pta += 2;
+					continue;
 				}
 				tmp = pta[0]; pta[0] = pta[1]; pta[1] = tmp;
 			}
-
-			ptt = pta - 1;
-			pta += 2;
+			break;
 		}
-		else
-		{
-			if (pts == array)
-			{
-				if (nmemb % 2 == 0 || cmp(&pta[-1], &pta[0]) > 0)
-				{
-					ptt = pts + nmemb - 1;
 
-					while (pts < ptt)
-					{
-						tmp = *pts;
-						*pts++ = *ptt;
-						*ptt-- = tmp;
-					}
-
-					return 1;
-				}
-			}
-			ptt = pta - 1;
-		}
+		ptt = pta - 1;
+		pta += 2;
 
 		while (pts < ptt)
 		{
@@ -332,14 +330,15 @@ void tail_merge64(long long *array, long long *swap, size_t nmemb, size_t block,
 				c_max--;
 			}
 
-			c = c_max - 1;
+			c = pts;
+			d = pta + block;
 
-			while (c >= pts)
+			while (c < c_max)
 			{
-				*c-- = *d--;
+				*c++ = *d++;
 			}
+			c--;
 
-			c = c_max - 1;
 			d = pta + block - 1;
 			e = d_max - 1;
 

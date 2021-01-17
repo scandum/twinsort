@@ -433,8 +433,8 @@ int validate()
 
 int main(int argc, char **argv)
 {
-	int max = 100000;
-	int samples = 10;
+	int max = 1000000;
+	int samples = 3;
 	int repetitions = 1;
 	long long *la_array, *lr_array, *lv_array;
 	int *a_array, *r_array, *v_array;
