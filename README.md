@@ -53,7 +53,7 @@ These distributions are: Random, Ascending, Ascending Saw, Generic, Descending, 
 The upper half shows the swap memory and the bottom half shows the main memory.
 Colors are used to differentiate between skip, swap, and merge operations.
 
-[![tailsort visualization](https://github.com/scandum/tailsort/blob/master/tailsort.gif)](https://www.youtube.com/watch?v=vhg0K7WcB4I)
+[![tailsort visualization](https://github.com/scandum/tailsort/blob/main/tailsort.gif)](https://www.youtube.com/watch?v=vhg0K7WcB4I)
 
 Benchmarks
 ----------
