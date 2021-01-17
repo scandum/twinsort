@@ -9,7 +9,7 @@ The algorithm is about 150 lines of sparse C code that should be relatively easy
 
 Twin swap
 ---------
-The twin swap is a pre-sorting routine which turns the array into sorted blocks
+The twin_swap function is a pre-sorting routine which turns the array into sorted blocks
 of 2 elements. The twin swap routine also contains a reverse order run
 detector, so 6 5 4 3 2 1 is sorted into 1 2 3 4 5 6 rather than 5 6 3 4 1 2.
 
