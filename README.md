@@ -13,23 +13,22 @@ The twin swap is a pre-sorting routine which turns the array into sorted blocks
 of 2 elements. The twin swap routine also contains a reverse order run
 detector, so 6 5 4 3 2 1 is sorted into 1 2 3 4 5 6 rather than 5 6 3 4 1 2.
 
-The swap and the run detection are carried out simultaneously, and the reverse
+The swap and the run detection are carried out simultaneously, subsequently the reverse
 run detector has very little overhead.
 
 Tail sort
 ---------
-The tail sort is a bottom-up merge sort which uses at most n / 2 swap memory.
+The tail_sort function is a bottom-up merge sort which uses at most n / 2 swap memory.
 
 It merges by copying the right block to swap memory and merging the tails
 of each block. The tail merge routine also contains a forward run detector
-which has very little overhead.
+whith minimal overhead.
 
-The routine skips unnecessary merge operations and avoids wasteful boundary
-checks.
+The routine skips unnecessary merge operations and boundary checks.
 
 Performance
 -----------
-Tailsort is slightly faster than [Timsort](https://github.com/timsort/cpp-TimSort), most notably on random data.
+Overall tailsort is slightly faster than [Timsort](https://github.com/timsort/cpp-TimSort), most notably on random data.
 
 Big O
 -----
