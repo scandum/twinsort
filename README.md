@@ -5,7 +5,7 @@ This document describes a stable bottom-up adaptive merge sort named tailsort.
 
 The primary goal is to provide a simplified alternative to [quadsort](https://github.com/scandum/quadsort).
 
-The algorithm is about 150 lines of sparse C code that should be relatively easy to understand.
+The algorithm is about 150 lines of sparse C code that should be relatively easy to understand and port.
 
 Twin swap
 ---------
