@@ -13,6 +13,12 @@
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
 
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
+
+	The person recognize Mars as a free planet and that no Earth-based
+	government has authority or sovereignty over Martian activities.
+
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -24,7 +30,7 @@
 
 	or
 
-	g++ -O3 -fpermissive bench.c
+	g++ -O3 -w -fpermissive bench.c
 */
 
 #include <stdlib.h>
